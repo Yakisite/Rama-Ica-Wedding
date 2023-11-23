@@ -202,7 +202,9 @@
 
         <div class="row justify-content-center m-5">
           <div class="col-md-8 col-10 text-center">
+            <p>_______________________________</p>
             <p><strong>Perhatian</strong><br> Mohon kepada hadirin untuk tidak berjabat tangan dengan yang bukan mahrom dan berpakaian dengan sopan.</p>
+            <p>_______________________________</p>
           </div>
         </div>
       </div>
@@ -340,7 +342,7 @@
 
     <div id="audio-container">
       <audio id="song" autoplay loop>
-        <source src="audio/save-and-sound.mp3" type="audio/mp3" />
+        <source src="audio/bgm.mp3" type="audio/mp3" />
       </audio>
 
       <div class="audio-icon-wrapper" style="display: none">
@@ -388,23 +390,23 @@
       const song = document.querySelector("#song");
       let isPlaying = false;
 
-      // function disableScroll() {
-      //   scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      //   scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+      function disableScroll() {
+        scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
 
-      //   window.onscroll = function () {
-      //     window.scrollTo(scrollTop, scrollLeft);
-      //   };
+        window.onscroll = function () {
+          window.scrollTo(scrollTop, scrollLeft);
+        };
 
-      //   rootElement.style.scrollBehavior = "auto";
-      // }
+        rootElement.style.scrollBehavior = "auto";
+      }
 
-      // function enableScroll() {
-      //   window.onscroll = function () {};
-      //   rootElement.style.scrollBehavior = "smooth";
-      //   // localStorage.setItem('opened', 'true');
-      //   playAudio();
-      // }
+      function enableScroll() {
+        window.onscroll = function () {};
+        rootElement.style.scrollBehavior = "smooth";
+        // localStorage.setItem('opened', 'true');
+        playAudio();
+      }
 
       function playAudio() {
         song.volume = 0.1;
