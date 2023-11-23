@@ -98,7 +98,8 @@ body {
   margin-bottom: 2rem;
 }
 
-.info h2 {
+.info h2,
+.doa h2 {
   color: var(--softbrown);
   font-family: "Oooh Baby", cursive;
   font-size: 4rem;
@@ -116,6 +117,7 @@ body {
   color: var(--bg);
   font-size: 1.2rem;
   margin-bottom: 1rem;
+  font-weight: bold;
 }
 
 .home p {
@@ -217,6 +219,7 @@ body {
 }
 
 .rsvp,
+.doa,
 .gifts {
   padding-top: 8rem;
   padding-bottom: 8rem;
@@ -232,13 +235,43 @@ body {
 }
 
 .rsvp p,
+.doa p,
 .gifts p {
   font-size: 1rem;
   font-weight: 300;
 }
 
+.doa {
+  background-color: var(--bg);
+}
+
+.doa p {
+  color: white;
+}
+
+.doa h4 {
+  color: white;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.doa h6 {
+  color: white;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.doa img {
+  width: 100%;
+}
+
 .rsvp {
   background-color: white;
+  background-image: url(prop/texture.png);
+  background-size: cover;
+  min-height: 100vh;
+  margin-top: -6rem;
 }
 
 .rsvp h2 {
@@ -246,7 +279,7 @@ body {
 }
 
 .rsvp p {
-  color: var(--bg);
+  color: #666;
 }
 
 .rsvp a {
