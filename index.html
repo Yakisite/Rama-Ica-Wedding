@@ -46,9 +46,8 @@
             <div class="navbar-nav ms-auto">
               <a class="nav-link" href="#home">Acara</a>
               <a class="nav-link" href="#info">Info</a>
-              <a class="nav-link" href="#doa">Doa</a>
               <a class="nav-link" href="#rsvp">Lokasi</a>
-              <a class="nav-link" href="#gifts">Hadiah</a>
+              <a class="nav-link" href="#doa">Doa</a>
             </div>
           </div>
         </div>
@@ -173,19 +172,19 @@
         </div>
 
         <form class="row row-cols-md-auto g-3 align-items-center justify-content-center" method="POST" action="https://script.google.com/macros/s/AKfycbyBTRJQZ91RY_5ZLWw4x1EjW6pnbvrMFVhY2dWsn49ulC64mnHXRpfpWcEiSmwVOiqPPw/exec" id="my-form">
-          <div class="col-12">
+          <div class="col-10">
             <div class="mb-3">
               <label for="nama" class="form-label">Nama</label>
               <input type="text" class="form-control" id="nama" name="nama" />
             </div>
           </div>
-          <div class="col-12">
+          <div class="col-10">
             <div class="mb-3">
               <label for="jumlah" class="form-label">Jumlah</label>
               <input type="number" class="form-control" id="jumlah" name="jumlah" min="1" max="5" length="1" value="1" />
             </div>
           </div>
-          <div class="col-12">
+          <div class="col-10">
             <div class="mb-3">
               <label for="status" class="form-label">Konfirmasi</label>
               <select name="status" id="status" class="form-select">
@@ -195,7 +194,7 @@
               </select>
             </div>
           </div>
-          <div class="col-12" style="margin-top: 35px">
+          <div class="col-10" style="margin-top: 35px">
             <button class="btn btn-primary">Kirim</button>
           </div>
         </form>
@@ -292,13 +291,20 @@
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-md-8 col-10 text-center">
-            <span>ungkapan tanda kasih</span>
-            <h2>Kirim Hadiah</h2>
+            <!-- <span>ungkapan tanda kasih</span> -->
+            <h2>Hormat Kami</h2>
             <p>Terima Kasih kepada semua yang telah mendoakan kelancaran acara dan kelangsungan hubungan kami, semoga Allah SWT membalas kebaikan saudara sekalian.</p>
           </div>
         </div>
 
-        <div class="row justify-content-center text-center">
+        <div class="row justify-content-center">
+          <div class="col-md-8 col-10 text-center">
+            <a href="otherCode/ori.html" class="btn m-4">Kirim Ucapan</a>
+            <a href="otherCode/rica.html" class="btn m-4">Kirim Hadiah</a>
+          </div>
+        </div>
+
+        <!-- <div class="row justify-content-center text-center">
           <div class="col-md-6">
             <ul class="list-group">
               <li class="list-group-item">
@@ -315,9 +321,10 @@
               </li>
             </ul>
           </div>
-        </div>
+        </div> -->
+
         <div class="row justify-content-center text-center">
-          <div class="col-md-8 col-12 text-center">
+          <div class="col-md-8 col-10 text-center">
             <p class="m-4">_______________________________</p>
             <p class="ayat mt-5">
               Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir.
@@ -404,7 +411,7 @@
       function enableScroll() {
         window.onscroll = function () {};
         rootElement.style.scrollBehavior = "smooth";
-        // localStorage.setItem('opened', 'true');
+        localStorage.setItem('opened', 'true');
         playAudio();
       }
 

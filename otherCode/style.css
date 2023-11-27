@@ -241,18 +241,6 @@ body {
   font-weight: 300;
 }
 
-.gifts a {
-  color: var(--softbrown);
-  background-color: var(--bg);
-  box-shadow: var(--shadow);
-  margin-left: 3rem;
-}
-
-.gifts a:hover {
-  background-color: var(--softbrown);
-  color: var(--bg);
-}
-
 .doa {
   background-color: var(--bg);
 }
