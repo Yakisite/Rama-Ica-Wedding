@@ -60,7 +60,7 @@
             <ul class="list-group">
               <li class="list-group-item">
                 <div class="fw-bold">BRI</div>
-                10601029002532 - Jessica Octaviani
+                010601029002532 - Jessica Octaviani
               </li>
               <li class="list-group-item">
                 <div class="fw-bold">MANDIRI</div>
@@ -165,6 +165,53 @@
       //   disableScroll();
       // }
       disableScroll();
+    </script>
+
+    <script>
+      function simpanKomentar() {
+        // Ambil data dari form
+        var nama = document.getElementById("nama").value;
+        var ucapan = document.getElementById("ucapan").value;
+
+        // Lakukan pengiriman data (AJAX) ke file JSON di GitHub
+        // Contoh: menggunakan Fetch API
+        fetch("https://api.github.com/repos/yakisite/Rama-Ica-Wedding/json/komen.json", {
+          method: "GET",
+          headers: {
+            Authorization: "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",
+            Accept: "application/vnd.github.v3+json",
+          },
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            // Ubah data JSON yang ada di dalam file
+            // Tambahkan komentar baru ke dalam data
+            data.push({ nama: nama, ucapan: ucapan });
+
+            // Kirim kembali data yang telah diubah
+            fetch("https://api.github.com/repos/yakisite/Rama-Ica-Wedding/json/komen.json", {
+              method: "PUT",
+              headers: {
+                Authorization: "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",
+                Accept: "application/vnd.github.v3+json",
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                message: "Menambahkan komentar baru",
+                content: btoa(JSON.stringify(data)),
+                sha: "SHA_VALUE_OF_COMMENT_FILE",
+              }),
+            })
+              .then((response) => response.json())
+              .then((result) => {
+                // Handle jika berhasil menyimpan komentar
+                console.log("Komentar berhasil disimpan:", result);
+                // Lakukan sesuatu setelah berhasil disimpan
+              })
+              .catch((error) => console.error("Terjadi kesalahan:", error));
+          })
+          .catch((error) => console.error("Terjadi kesalahan:", error));
+      }
     </script>
   </body>
 </html>

@@ -47,8 +47,51 @@
 
     <div class="row justify-content-center m-5">
       <div class="col-md-6">
-        <div id="disqus_thread"></div>
+        <form id="ucapanForm" class="mb-5 mt-5">
+          <label for="nama" class="form-label">Nama:</label>
+          <input type="text" id="nama" required class="form-control mb-2" />
+
+          <label for="pesan" class="form-label mt-3">Pesan:</label>
+          <textarea id="pesan" required class="form-control"></textarea>
+
+          <button type="button" class="btn btn-dark pt-2 mt-5 mb-5 text-center" onclick="kirimUcapan()">Kirim Ucapan</button>
+        </form>
+
+        <div>
+          <p>_______________________________</p>
+        </div>
+
+        <div id="daftarUcapan">
+          <!-- Ucapan akan ditampilkan di sini -->
+        </div>
+
         <script>
+          function kirimUcapan() {
+            // Ambil nilai dari formulir
+            var nama = document.getElementById("nama").value;
+            var pesan = document.getElementById("pesan").value;
+
+            // Validasi input
+            if (nama === "" || pesan === "") {
+              alert("Nama dan pesan harus diisi!");
+              return;
+            }
+
+            // Buat elemen baru untuk menampilkan ucapan
+            var ucapanElement = document.createElement("div");
+            ucapanElement.className = "ucapan";
+            ucapanElement.innerHTML = "<strong>" + nama + ":</strong> " + pesan;
+
+            // Tambahkan ucapan ke daftar ucapan
+            document.getElementById("daftarUcapan").appendChild(ucapanElement);
+
+            // Bersihkan formulir
+            document.getElementById("nama").value = "";
+            document.getElementById("pesan").value = "";
+          }
+        </script>
+        <!-- <div id="disqus_thread"></div> -->
+        <!-- <script>
           /**
            *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
            *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
@@ -66,8 +109,8 @@
             s.setAttribute("data-timestamp", +new Date());
             (d.head || d.body).appendChild(s);
           })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </script> -->
+        <!-- <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript> -->
       </div>
     </div>
 
@@ -201,6 +244,53 @@
       namaContainer.innerText = `${pronoun} ${nama},`.replace(/ ,$/, ",");
 
       document.querySelector("#nama").value = nama;
+    </script>
+
+    <script>
+      function simpanKomentar() {
+        // Ambil data dari form
+        var nama = document.getElementById("nama").value;
+        var ucapan = document.getElementById("ucapan").value;
+
+        // Lakukan pengiriman data (AJAX) ke file JSON di GitHub
+        // Contoh: menggunakan Fetch API
+        fetch("https://api.github.com/repos/yakisite/Rama-Ica-Wedding/json/komen.json", {
+          method: "GET",
+          headers: {
+            Authorization: "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",
+            Accept: "application/vnd.github.v3+json",
+          },
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            // Ubah data JSON yang ada di dalam file
+            // Tambahkan komentar baru ke dalam data
+            data.push({ nama: nama, ucapan: ucapan });
+
+            // Kirim kembali data yang telah diubah
+            fetch("https://api.github.com/repos/yakisite/Rama-Ica-Wedding/json/komen.json", {
+              method: "PUT",
+              headers: {
+                Authorization: "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",
+                Accept: "application/vnd.github.v3+json",
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                message: "Menambahkan komentar baru",
+                content: btoa(JSON.stringify(data)),
+                sha: "SHA_VALUE_OF_COMMENT_FILE",
+              }),
+            })
+              .then((response) => response.json())
+              .then((result) => {
+                // Handle jika berhasil menyimpan komentar
+                console.log("Komentar berhasil disimpan:", result);
+                // Lakukan sesuatu setelah berhasil disimpan
+              })
+              .catch((error) => console.error("Terjadi kesalahan:", error));
+          })
+          .catch((error) => console.error("Terjadi kesalahan:", error));
+      }
     </script>
   </body>
 </html>
